@@ -1,2 +1,3 @@
 httpx~=0.28.1
-zk_cvs_client
+zk_cvs_client~=0.1.0
+APScheduler~=3.11.0
