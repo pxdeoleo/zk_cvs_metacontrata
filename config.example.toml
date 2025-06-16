@@ -1,0 +1,16 @@
+[metacontrata]
+username = "user"
+password = "passowrd"
+base_url = "https://www.metaurl.com/servicesV2/rest/"
+
+[cvsecurity]
+base_url = "https://localhost"
+port = 8098
+api_key = "secret-key"
+ignore_ssl = true
+
+[logging]
+enabled = true
+
+[cron]
+expression = "0 */6 * * *"
