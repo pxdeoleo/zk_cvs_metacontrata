@@ -2,17 +2,17 @@ import asyncio
 import logging
 import tomllib
 from metacontrata_client import MetaContrataClient
-from src.zk_cvs_client.apis.departmentApi import CVSecurityDepartmentAPI
 
-from src.zk_cvs_client.apis.personApi import CVSecurityPersonAPI
-from src.zk_cvs_client.auth import CVSecurityAuth
-from src.zk_cvs_client.client import CVSecurityClient
+from zk_cvs_client.models import Department
+from zk_cvs_client.models import Person
+from zk_cvs_client.apis import CVSecurityDepartmentAPI
+from zk_cvs_client.apis import CVSecurityPersonAPI
+
+from zk_cvs_client import CVSecurityAuth
+from zk_cvs_client import CVSecurityClient
 
 from contextlib import asynccontextmanager
 from typing import AsyncGenerator, Any, Generator
-
-from src.zk_cvs_client.models.department import Department
-from src.zk_cvs_client.models.person import Person
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
