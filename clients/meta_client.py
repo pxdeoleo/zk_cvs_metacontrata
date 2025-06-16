@@ -1,3 +1,6 @@
+from contextlib import asynccontextmanager
+from typing import AsyncGenerator
+
 from typing import Optional, Dict, Any
 from urllib.parse import urljoin
 import httpx
@@ -136,3 +139,10 @@ class MetaContrataClient:
             raise Exception(f"Error fetching subcontrata list: {data['mensaje']}")
 
         return data["resultado"]
+
+
+@asynccontextmanager
+async def get_meta_client(cfg: dict) -> AsyncGenerator[MetaContrataClient, None]:
+    async with MetaContrataClient(cfg["username"], cfg["password"], cfg["base_url"]) as client:
+        await client.authenticate()
+        yield client
