@@ -4,12 +4,11 @@ from config import load_config
 from main import main
 import asyncio
 
-def start_scheduler():
+
+def start_scheduler(loop: asyncio.AbstractEventLoop) -> None:
     config = load_config()
     cron_expr = config["cron"]["expression"]
 
-    scheduler = AsyncIOScheduler()
+    scheduler = AsyncIOScheduler(event_loop=loop)
     scheduler.add_job(main, CronTrigger.from_crontab(cron_expr))
-    scheduler.start()
-
-    asyncio.get_event_loop().run_forever()
+    loop.call_soon(scheduler.start)

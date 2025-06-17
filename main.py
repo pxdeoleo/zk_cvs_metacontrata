@@ -6,8 +6,7 @@ from clients.cv_client import get_cv_client
 from services.employee_sync_service import sync_employees
 from services.department_sync_service import sync_departments
 from zk_cvs_client.apis import CVSecurityDepartmentAPI, CVSecurityPersonAPI
-
-logging.basicConfig(level=logging.INFO)
+from logging_config import setup_logging
 
 async def main():
     config = load_config()
@@ -22,4 +21,5 @@ async def main():
         await sync_employees(meta_client, cv_person_api)
 
 if __name__ == "__main__":
+    setup_logging()
     asyncio.run(main())
